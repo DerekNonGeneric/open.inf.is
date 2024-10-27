@@ -30,7 +30,7 @@ export const scssify = () => {
     .pipe(sourcemaps.init())
     .pipe(sass().on('error', sass.logError))
     // For dev: outputs the non-minified version (into ./assets/styles).
-    .pipe(dest(PATHS.jekyllCssFiles))
+    .pipe(dest(PATHS.eleventyCssFiles))
     // For prod: optimizes, renames to foo.min.css (into ./_site/assets/styles).
     .pipe(postcss([autoprefixer(), cssnano()]))
     .pipe(sourcemaps.write('./maps'))

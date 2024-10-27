@@ -1,0 +1,22 @@
+[
+  {
+    "text": "Home",
+    "permalink": "",
+    "class": "home"
+  },
+  {
+    "text": "News",
+    "permalink": "news",
+    "class": "news"
+  },
+  {
+    "text": "Docs",
+    "permalink": "docs",
+    "class": "docs"
+  },
+  {
+    "text": "About",
+    "permalink": "about",
+    "class": "about"
+  }
+]

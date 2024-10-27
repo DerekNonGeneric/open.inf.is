@@ -183,7 +183,8 @@
     ".renovaterc.json5": "json5",
     "*.scss": "scss",
     ".snyk": "yaml",
-    "*.html": "liquid"
+    "*.html": "liquid",
+    ".eleventyignore": "ignore"
   },
 
   // Configure glob patterns for excluding files and folders. For example, the

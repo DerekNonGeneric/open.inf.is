@@ -6,7 +6,8 @@
  */
 
 import { PATHS } from '@openinf/portal/build/constants';
-import { jekyllify } from '@openinf/portal/build/tasks/jekyllify';
+import { eleventify } from '@openinf/portal/build/tasks/eleventify';
+import { imagize } from '@openinf/portal/build/tasks/imagize';
 import { scssify } from '@openinf/portal/build/tasks/scssify';
 import { exec } from '@openinf/portal/build/utils';
 import browserSync from 'browser-sync';
@@ -14,7 +15,9 @@ import { series, watch } from 'gulp';
 
 // Perform the initial site build before launching the server to ensure an
 // up-to-date site is served even if already built.
-await exec('nps compile.buildPortal');
+await eleventify();
+scssify();
+await imagize();
 
 browserSync.create();
 const reload = browserSync.reload;
@@ -33,18 +36,14 @@ browserSync.init({
 
 // Watch style files, regenerate site, and reload browser on change.
 watch(PATHS.sassFiles).on('change', scssify);
-watch(PATHS.jekyllCssFiles).on('change', jekyllify);
+watch(PATHS.eleventyCssFiles).on('change', eleventify);
 watch(PATHS.siteCssFiles).on('change', reload);
 
-// Watch Jekyll files, regenerate site, and reload browser on change.
-watch(PATHS.jekyllDataFilesGlob).on('change', series(jekyllify, reload));
-watch(PATHS.jekyllDraftFilesGlob).on('change', series(jekyllify, reload));
-watch(PATHS.jekyllImageFilesGlob).on('change', series(jekyllify, reload));
-watch(PATHS.jekyllIncludesFilesGlob).on('change', series(jekyllify, reload));
-watch(PATHS.jekyllLayoutsFilesGlob).on('change', series(jekyllify, reload));
-watch([PATHS.jekyllPageFilesGlob, 'news.html']).on(
-  'change',
-  series(jekyllify, reload)
-);
-watch(PATHS.jekyllPluginsFilesGlob).on('change', series(jekyllify, reload));
-watch(PATHS.jekyllPostFilesGlob).on('change', series(jekyllify, reload));
+// Watch Eleventy files, regenerate site, and reload browser on change.
+watch(PATHS.eleventyDataFilesGlob).on('change', series(eleventify, reload));
+watch(PATHS.eleventyDraftFilesGlob).on('change', series(eleventify, reload));
+watch(PATHS.eleventyImageFilesGlob).on('change', series(eleventify, reload));
+watch(PATHS.eleventyIncludesFilesGlob).on('change', series(eleventify, reload));
+watch(PATHS.eleventyLayoutsFilesGlob).on('change', series(eleventify, reload));
+watch(PATHS.eleventyPageFilesGlob).on('change', series(eleventify, reload));
+watch(PATHS.eleventyPostFilesGlob).on('change', series(eleventify, reload));

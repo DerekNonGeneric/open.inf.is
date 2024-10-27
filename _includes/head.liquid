@@ -1,0 +1,72 @@
+<head>
+  <meta charset='utf-8'>
+  <meta
+    name='viewport'
+    content='width=device-width,maximum-scale=1,minimum-scale=1,initial-scale=1'
+  >
+  <link
+    type='image/svg+xml'
+    rel='shortcut icon preload'
+    as='image'
+    href='/assets/img/logo.svg'
+    integrity='sha512-MhRWk6SE+DkE7TeYTf7QigVZjcVTEUJKwbMR60ZYS9xcA1k3eGkRRTM4xklozGDEYJjbQVx9ZwN/7+itkV5fQw=='
+    crossorigin='anonymous'
+  >
+  <meta
+    name='description'
+    content='{{ siteDescription }}'
+  >
+  <meta name='format-detection' content='telephone=no'>
+  {% if status == 'unpublished' %}
+    <meta name='robots' content='noindex, nofollow, noarchive'>
+  {% endif %}
+  <title>
+    {% if page.url == '/' -%}
+      {{- siteTitle -}}
+    {%- else -%}
+      {{- title }} &middot; {{ siteTitle -}}
+    {%- endif %}
+  </title>
+  <script
+    type='module'
+    src='https://cdn.ampproject.org/bento.mjs'
+    crossorigin='anonymous'
+  ></script>
+  <script
+    nomodule
+    src='https://cdn.ampproject.org/bento.js'
+    crossorigin='anonymous'
+  ></script>
+  <script
+    type='module'
+    src='https://cdn.ampproject.org/v0/bento-sidebar-1.0.mjs'
+    crossorigin='anonymous'
+  ></script>
+  <script
+    nomodule
+    src='https://cdn.ampproject.org/v0/bento-sidebar-1.0.js'
+    crossorigin='anonymous'
+  ></script>
+  <link
+    rel='stylesheet'
+    href='https://cdn.ampproject.org/v0/bento-sidebar-1.0.css'
+    crossorigin='anonymous'
+  >
+  <link
+    rel='stylesheet'
+    href='/assets/styles/main.css'
+  >
+  <link rel='canonical' href='{{ siteUrl }}{{ page.url }}'>
+  {% if page.url == '/' %}
+    <script type='application/ld+json'>
+      {
+        "@context": "http://schema.org",
+        "@type": "WebSite",
+        "license": "https://open.inf.is/license",
+        "about": {
+          "description": "{{ siteDescription }}"
+        }
+      }
+    </script>
+  {% endif %}
+</head>

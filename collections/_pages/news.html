@@ -1,0 +1,95 @@
+---
+title: News Archive
+body_classes:
+  - news
+layout: page
+permalink: "/news/{% if pagination.pageNumber > 0 %}{{ pagination.pageNumber | plus: 1 }}/{% endif %}"
+eleventyImport:
+  collections: ["post"]
+pagination:
+  data: collections.posts
+  alias: posts
+  size: 3
+eleventyComputed:
+  title: "{{ title }}{% if pagination.pageNumber > 0 %} &middot; page {{ pagination.pageNumber | plus: 1 }}{% endif %}"
+---
+{%- for post in posts -%}
+  {%- include 'news-archive-item.liquid' -%}
+{%- endfor -%}
+
+{%- assign trailSize = 2 -%}
+{% comment %} Start and end page numbers based on trail size. {% endcomment %}
+
+{%- assign firstPageIndex = 0 -%}
+{%- assign currentPageIndex = pagination.pageNumber -%}
+{%- assign lastPageIndex = pagination.pages.length | minus: 1 -%}
+
+{%- assign startPageIndex = currentPageIndex
+  | minus: trailSize
+  | at_least: firstPageIndex
+-%}
+{%- assign endPageIndex = currentPageIndex
+  | plus: trailSize
+  | at_most: lastPageIndex
+-%}
+
+{% if pagination.pages.length > 1 %}
+  <nav class="pagination-container" aria-label="Blog page navigation">
+    <ul class="pagination justify-content-center">
+      {% if pagination.href.previous %}
+        <li class="page-item">
+          <a
+            class="page-link"
+            href="{{ pagination.href.previous }}"
+            tabindex="-1"
+            >&#x23F4;</a
+          >
+        </li>
+      {% else %}
+        <li class="page-item disabled">
+          <span
+            class="page-link"
+            href="{{ pagination.href.previous }}"
+            tabindex="-1"
+            >&#x23F4;</span
+          >
+        </li>
+      {% endif %}
+
+      {% comment %} Display the pagination trail. {% endcomment %}
+      {%- for pageIndex in (startPageIndex..endPageIndex) %}
+        {%- assign pageEntry = pagination.pages[pageIndex] -%}
+        <li
+          class="page-item{% if page.url == pagination.hrefs[pageIndex] %} active{% endif %}">
+          <a
+            class="page-link"
+            href="{{ pagination.hrefs[pageIndex] }}"
+            {% if page.url == pagination.hrefs[pageIndex] %}
+              aria-current="page"
+            {% endif %}
+            title="{{ pageEntry.title }}">
+            {{- pageIndex | plus: 1 -}}
+          </a>
+        </li>
+      {% endfor %}
+
+      {% if pagination.href.next %}
+        <li class="page-item">
+          <a
+            class="page-link"
+            href="{{ pagination.href.next }}"
+            >&#x23F5;</a
+          >
+        </li>
+      {% else %}
+        <li class="page-item">
+          <span
+            class="page-link disabled"
+            href="{{ pagination.href.next }}"
+            >&#x23F5;</span
+          >
+        </li>
+      {% endif %}
+    </ul>
+  </nav>
+{% endif %}

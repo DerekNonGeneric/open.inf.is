@@ -9,9 +9,8 @@ const PATHS = {};
 
 // Directory locations.
 PATHS.assetsDir = '_assets/'; // The files Gulp will handle.
-// PATHS.jekyllDir = ''; // The files Jekyll will handle.
-PATHS.jekyllAssetsDir = 'assets/'; // The asset files Jekyll will handle.
-PATHS.jekyllCollectionsDir = 'collections/'; // The collections files Jekyll will handle.
+PATHS.eleventyAssetsDir = 'assets/'; // The asset files Jekyll will handle.
+PATHS.eleventyCollectionsDir = 'collections/'; // The collections files Jekyll will handle.
 PATHS.siteDir = '_site/'; // The resulting static site.
 PATHS.siteAssetsDir = '_site/assets/'; // The resulting static site's assets.
 
@@ -28,53 +27,52 @@ PATHS.postFolder = '_posts';
 PATHS.scriptFolder = 'js';
 PATHS.stylesFolder = 'styles';
 
-// Asset files locations.
+// Asset file locations.
 PATHS.sassFiles = PATHS.assetsDir + PATHS.stylesFolder;
 PATHS.jsFiles = PATHS.assetsDir + PATHS.scriptFolder;
 PATHS.imageFiles = PATHS.assetsDir + PATHS.imageFolder;
 PATHS.fontFiles = PATHS.assetsDir + PATHS.fontFolder;
 
-// Jekyll files locations.
-PATHS.jekyllCssFiles = PATHS.jekyllAssetsDir + PATHS.stylesFolder;
-PATHS.jekyllDataFiles = PATHS.dataFolder;
-PATHS.jekyllDraftFiles = PATHS.jekyllCollectionsDir + PATHS.draftsFolder;
-PATHS.jekyllFontFiles = PATHS.jekyllAssetsDir + PATHS.fontFolder;
-PATHS.jekyllImageFiles = PATHS.jekyllAssetsDir + PATHS.imageFolder;
-PATHS.jekyllJsFiles = PATHS.jekyllAssetsDir + PATHS.scriptFolder;
-PATHS.jekyllPageFiles = PATHS.jekyllCollectionsDir + PATHS.pagesFolder;
-PATHS.jekyllPostFiles = PATHS.jekyllCollectionsDir + PATHS.postFolder;
+// Eleventy file locations.
+PATHS.eleventyCssFiles = PATHS.eleventyAssetsDir + PATHS.stylesFolder;
+PATHS.eleventyDataFiles = PATHS.dataFolder;
+PATHS.eleventyDraftFiles = PATHS.eleventyCollectionsDir + PATHS.draftsFolder;
+PATHS.eleventyFontFiles = PATHS.eleventyAssetsDir + PATHS.fontFolder;
+PATHS.eleventyImageFiles = PATHS.eleventyAssetsDir + PATHS.imageFolder;
+PATHS.eleventyJsFiles = PATHS.eleventyAssetsDir + PATHS.scriptFolder;
+PATHS.eleventyPageFiles = PATHS.eleventyCollectionsDir + PATHS.pagesFolder;
+PATHS.eleventyPostFiles = PATHS.eleventyCollectionsDir + PATHS.postFolder;
 
-// Site files locations.
+// Site file locations.
 PATHS.siteCssFiles = PATHS.siteAssetsDir + PATHS.stylesFolder;
 PATHS.siteJsFiles = PATHS.siteAssetsDir + PATHS.scriptFolder;
 PATHS.siteImageFiles = PATHS.siteAssetsDir + PATHS.imageFolder;
 PATHS.siteFontFiles = PATHS.siteAssetsDir + PATHS.fontFolder;
 
 // Glob patterns by file type.
-PATHS.dataPattern = '/**/*.yml';
+PATHS.dataPattern = '/**/*.json';
 PATHS.htmlPattern = '/**/*.html';
-PATHS.imagePattern = '/**/*.svg';
+PATHS.imagePattern = '/**/*.{jpg,svg}';
 PATHS.jsPattern = '/**/*.js';
+PATHS.liquidPattern = '/**/*.liquid';
 PATHS.markdownPattern = '/**/*.md';
-PATHS.rubyPattern = '/**/*.rb';
 PATHS.sassPattern = '/**/*.scss';
 
-// Asset files globs.
+// Asset file globs.
 PATHS.sassFilesGlob = PATHS.sassFiles + PATHS.sassPattern;
 PATHS.jsFilesGlob = PATHS.jsFiles + PATHS.jsPattern;
 PATHS.imageFilesGlob = PATHS.imageFiles + PATHS.imagePattern;
 
-// Jekyll files globs.
-PATHS.jekyllDataFilesGlob = PATHS.jekyllDataFiles + PATHS.dataPattern;
-PATHS.jekyllDraftFilesGlob = PATHS.jekyllDraftFiles + PATHS.markdownPattern;
-PATHS.jekyllIncludesFilesGlob = PATHS.includesFolder + PATHS.htmlPattern;
-PATHS.jekyllLayoutsFilesGlob = PATHS.layoutsFolder + PATHS.htmlPattern;
-PATHS.jekyllPluginsFilesGlob = PATHS.pluginsFolder + PATHS.rubyPattern;
-PATHS.jekyllPageFilesGlob = PATHS.jekyllPageFiles + PATHS.htmlPattern;
-PATHS.jekyllPostFilesGlob = PATHS.jekyllPostFiles + PATHS.markdownPattern;
-PATHS.jekyllImageFilesGlob = PATHS.jekyllImageFiles + PATHS.imagePattern;
+// Eleventy file globs.
+PATHS.eleventyDataFilesGlob = PATHS.eleventyDataFiles + PATHS.dataPattern;
+PATHS.eleventyDraftFilesGlob = PATHS.eleventyDraftFiles + PATHS.markdownPattern;
+PATHS.eleventyIncludesFilesGlob = PATHS.includesFolder + PATHS.liquidPattern;
+PATHS.eleventyLayoutsFilesGlob = PATHS.layoutsFolder + PATHS.liquidPattern;
+PATHS.eleventyPageFilesGlob = PATHS.eleventyPageFiles + PATHS.htmlPattern;
+PATHS.eleventyPostFilesGlob = PATHS.eleventyPostFiles + PATHS.markdownPattern;
+PATHS.eleventyImageFilesGlob = PATHS.eleventyImageFiles + PATHS.imagePattern;
 
-// Site files globs.
+// Site file globs.
 PATHS.siteHtmlFilesGlob = PATHS.siteDir + PATHS.htmlPattern;
 
 export { PATHS };

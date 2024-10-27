@@ -1,5 +1,5 @@
 /**
- * @file Main build task; build entire portal.
+ * @file Main build task; build entire portal (for production).
  * @author The OpenINF Authors & Friends
  * @license MIT OR Apache-2.0 OR BlueOak-1.0.0
  * @module {type ES6Module} build/tasks/compile/build-portal
@@ -11,9 +11,12 @@ import { exec } from '@openinf/portal/build/utils';
 
 let exitCode = 0;
 
+process.env.ELEVENTY_ENV = 'production';
+
 const scripts = [
   'nps compile.buildStyles',
-  'JEKYLL_ENV=production bundle exec jekyll build',
+  'nps compile.buildImages',
+  'eleventy',
 ];
 
 // Only siteify health files in _this_ task if they're missing.
