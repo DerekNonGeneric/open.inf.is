@@ -1,5 +1,6 @@
 import { EleventyI18nPlugin } from '@11ty/eleventy';
 
+// skipcq: JS-0116
 export default async function (eleventyConfig) {
   // Configure Eleventy.
   // Order matters, leave this at top of configuration file.
@@ -18,6 +19,8 @@ export default async function (eleventyConfig) {
     if (data.draft && process.env.ELEVENTY_ENV === 'production') {
       return false;
     }
+
+    return null;
   });
 
   eleventyConfig.addCollection('posts', (collectionApi) => {
