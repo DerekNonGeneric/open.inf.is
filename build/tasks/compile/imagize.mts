@@ -12,12 +12,10 @@
 import { copyFile, mkdir } from 'node:fs/promises';
 import {
   dirname as pathDirname,
-  extname as pathExtname,
   join as pathJoin,
   relative as pathRelative,
   resolve as pathResolve,
 } from 'node:path';
-import Image from '@11ty/eleventy-img';
 import { PATHS } from '@openinf/portal/build/constants';
 import { glob } from '@openinf/portal/build/utils';
 
@@ -54,21 +52,10 @@ async function copyFileWithDirStructure(source, sourceBaseDir, targetBaseDir) {
 
 export const imagize = async () => {
   for (const imageFile of imageFiles) {
-    if (pathExtname(imageFile) === '.svg') {
-      await copyFileWithDirStructure(
-        imageFile,
-        pathResolve(PATHS.assetsDir),
-        pathResolve(PATHS.eleventyAssetsDir)
-      );
-    } else {
-      const stats = await Image(imageFile, {
-        widths: [48],
-        formats: ['auto'],
-        outputDir: PATHS.eleventyImageFiles,
-        urlPath: `/${PATHS.eleventyImageFiles}/`,
-      });
-
-      console.log(stats);
-    }
+    await copyFileWithDirStructure(
+      imageFile,
+      pathResolve(PATHS.assetsDir),
+      pathResolve(PATHS.eleventyAssetsDir)
+    );
   }
 };
