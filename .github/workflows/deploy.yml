@@ -1,4 +1,4 @@
-# Build and deploy the Eleventy site to GitHub Pages
+# Build and deploy the Eleventy site to GitHub Pages.
 name: Deploy Eleventy site to Pages
 
 on:
