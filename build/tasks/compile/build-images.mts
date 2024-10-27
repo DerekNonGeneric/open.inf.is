@@ -1,3 +1,3 @@
 import { imagize } from './imagize.mjs';
-imagize();
+await imagize();
 process.exit(0);
