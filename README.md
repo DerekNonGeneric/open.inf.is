@@ -67,7 +67,7 @@ comprising our style guide handbook uses the CC BY-SA 4.0 license.
     alt="The OpenINF logo"
     height="32px"
     width="32px"
-    src="https://open.inf.is/assets/img/svg/logo.svg"
+    src="https://open.inf.is/assets/img/logogram.svg"
   />
 </a>
 

@@ -1,0 +1,12 @@
+---
+layout: default
+editable: true
+---
+<main class='flex-shrink-0'>
+  <div class='container'>
+    {%- if page.permalink != '/' -%}
+      <h1 class='mt-5'>{{ title }}</h1>
+    {%- endif -%}
+    {{ content }}
+  </div>
+</main>

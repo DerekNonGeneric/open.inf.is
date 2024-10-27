@@ -1,0 +1,25 @@
+{%- if body_classes -%}
+  {%- assign classes = body_classes | join: ' ' -%}
+{%- endif -%}
+<!doctype html>
+<html
+  class='h-100'
+  {% if page.lang == 'ar' %}
+    dir='rtl' lang='ar'
+  {% else %}
+    dir='ltr' lang='{{ page.lang }}'
+  {% endif %}
+>
+  {%- include 'head' -%}
+
+  <body
+    vocab='http://schema.org/'
+    typeof='WebPage'
+    id='top'
+    class='d-flex flex-column h-100{% if classes %} {{ classes }}{% endif %}'
+  >
+    {%- include 'header' -%}
+    {{- content -}}
+    {%- include 'footer' -%}
+  </body>
+</html>

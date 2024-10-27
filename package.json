@@ -11,7 +11,8 @@
   "exports": {
     "./build/constants": "./build/shared/constants.mjs",
     "./build/tasks/scssify": "./build/tasks/compile/scssify.mjs",
-    "./build/tasks/jekyllify": "./build/tasks/compile/jekyllify.mjs",
+    "./build/tasks/eleventify": "./build/tasks/compile/eleventify.mjs",
+    "./build/tasks/imagize": "./build/tasks/compile/imagize.mjs",
     "./build/utils": "./build/utils.mjs"
   },
   "homepage": "open.inf.is",
@@ -22,6 +23,7 @@
     "test": "nps test"
   },
   "devDependencies": {
+    "@11ty/eleventy": "3.0.0",
     "@biomejs/biome": "1.9.3",
     "@cspell/dict-lorem-ipsum": "4.0.3",
     "@isaacs/catcher": "1.0.4",
@@ -106,6 +108,8 @@
     "tsx": "4.19.1",
     "typescript": "5.6.3",
     "unified": "11.0.5",
-    "vnu-jar": "23.4.11"
+    "vnu-jar": "23.4.11",
+    "zod": "3.23.8",
+    "zod-validation-error": "3.4.0"
   }
 }
