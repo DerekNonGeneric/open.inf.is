@@ -18,7 +18,7 @@
           {% for link in menu %}
             <li class='nav-item'>
               <a
-                class='nav-link{% if page.body_classes contains link.class %} active{% endif %}'
+                class='nav-link{% if body_classes contains link.class %} active{% endif %}'
                 href='/{{ link.permalink }}'
               >
                 {{ link.text }}
