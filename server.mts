@@ -9,7 +9,6 @@ import { PATHS } from '@openinf/portal/build/constants';
 import { eleventify } from '@openinf/portal/build/tasks/eleventify';
 import { imagize } from '@openinf/portal/build/tasks/imagize';
 import { scssify } from '@openinf/portal/build/tasks/scssify';
-import { exec } from '@openinf/portal/build/utils';
 import browserSync from 'browser-sync';
 import { series, watch } from 'gulp';
 
