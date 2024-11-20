@@ -89,6 +89,11 @@
   .newer-post {
     padding-right: 1rem;
     padding-left: 4rem;
+    text-align: left;
+
+    @include respond-to(handhelds) {
+      border-bottom: 1px solid #ddd;
+    }
 
     .pager-chevron {
       left: 1.5rem;
@@ -96,27 +101,6 @@
 
     &:hover .pager-chevron {
       left: 1rem;
-    }
-  }
-
-  .older-post {
-    padding-right: 4rem;
-    padding-left: 1rem;
-
-    .pager-chevron {
-      right: 1.5rem;
-    }
-
-    &:hover .pager-chevron {
-      right: 1rem;
-    }
-  }
-
-  .newer-post {
-    text-align: left;
-
-    @include respond-to(handhelds) {
-      border-bottom: 1px solid #ddd;
     }
 
     .pager-date {
@@ -126,7 +110,17 @@
 
   .older-post {
     justify-content: flex-end;
+    padding-right: 4rem;
+    padding-left: 1rem;
     text-align: right;
+
+    .pager-chevron {
+      right: 1.5rem;
+    }
+
+    &:hover .pager-chevron {
+      right: 1rem;
+    }
 
     .pager-date {
       right: 4rem;
