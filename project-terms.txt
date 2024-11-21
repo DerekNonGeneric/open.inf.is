@@ -15,6 +15,7 @@ devcontainer
 dorny
 dprint
 ecrc
+Eich
 eleventify
 Eleventy
 esbenp
