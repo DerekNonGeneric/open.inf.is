@@ -77,7 +77,7 @@
     }
 
     &:hover {
-      background: shade-color($body-bg, 25%);
+      background: shade-color($body-bg, 10%);
 
       .pager-title {
         color: $primary;
