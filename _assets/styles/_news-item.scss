@@ -54,12 +54,12 @@
     }
 
     .pager-date {
-      bottom: 1rem;
+      bottom: 0.5rem;
       font-size: 0.75em;
     }
 
     .pager-direction {
-      top: 1rem;
+      top: 0.5rem;
       font-weight: bold;
     }
 
@@ -72,10 +72,14 @@
       transition: all 0.2s ease;
     }
 
+    .pager-title {
+      line-height: 1.25rem;
+    }
+
     &:hover {
       background: #f5f5f5;
 
-      .post-title {
+      .pager-title {
         color: $primary;
       }
     }
