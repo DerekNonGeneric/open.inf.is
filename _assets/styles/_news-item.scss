@@ -1,5 +1,137 @@
+@mixin respond-to($media) {
+  @if $media == handhelds {
+    @include media-breakpoint-down(sm) {
+      @content;
+    }
+  } @else if $media == medium-screens {
+    @include media-breakpoint-up(sm) {
+      @content;
+    }
+  } @else if $media == wide-screens {
+    @include media-breakpoint-up(lg) {
+      @content;
+    }
+  }
+}
+
 .news-item {
   .post-content {
     padding-top: 3rem;
+  }
+
+  .single-post-pager {
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    width: 100%;
+    border-top: 2px solid $tertiary;
+    border-bottom: 2px solid $tertiary;
+
+    @include respond-to(handhelds) {
+      display: block;
+    }
+  }
+
+  .post-title {
+    font-weight: normal;
+  }
+
+  .pager-link {
+    position: relative;
+    display: flex;
+    flex: 1;
+    align-items: center;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    color: inherit;
+    text-decoration: none;
+
+    .pager-direction,
+    .pager-date,
+    .pager-chevron {
+      position: absolute;
+      color: $primary;
+    }
+
+    .pager-date {
+      bottom: 0.5rem;
+      font-size: 0.75em;
+    }
+
+    .pager-direction {
+      top: 0.5rem;
+      font-weight: bold;
+    }
+
+    .pager-chevron {
+      top: 50%;
+      height: 4rem;
+      margin-top: -2rem;
+      font-size: 4rem;
+      line-height: 4rem;
+      transition: all 0.2s ease;
+    }
+
+    .pager-title {
+      line-height: 1.25rem;
+    }
+
+    &:hover {
+      background: shade-color($body-bg, 10%);
+
+      .pager-title {
+        color: $primary;
+      }
+    }
+
+    @include respond-to(handhelds) {
+      display: block;
+      width: 100%;
+    }
+  }
+
+  .newer-post {
+    padding-right: 1rem;
+    padding-left: 4rem;
+    text-align: left;
+
+    @include respond-to(handhelds) {
+      border-bottom: 1px solid tint-color($tertiary, 10%);
+    }
+
+    .pager-chevron {
+      left: 1.5rem;
+    }
+
+    &:hover .pager-chevron {
+      left: 1rem;
+    }
+
+    .pager-date {
+      left: 4rem;
+    }
+  }
+
+  .older-post {
+    justify-content: flex-end;
+    padding-right: 4rem;
+    padding-left: 1rem;
+    text-align: right;
+
+    .pager-chevron {
+      right: 1.5rem;
+    }
+
+    &:hover .pager-chevron {
+      right: 1rem;
+    }
+
+    .pager-date {
+      right: 4rem;
+    }
+
+    .pager-direction {
+      right: 4rem;
+    }
   }
 }
