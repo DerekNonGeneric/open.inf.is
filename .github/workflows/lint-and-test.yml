@@ -44,6 +44,9 @@ jobs:
             ts:
               - '**/*.ts'
               - '**/*.mts'
+            js:
+              - '**/*.js'
+              - '**/*.mjs'
             json:
               - '**/*.json'
               - '**/*.json5'
@@ -81,6 +84,10 @@ jobs:
         if: ${{ steps.filter.outputs.ts == 'true' || steps.filter.outputs.json == 'true' }}
         run: nps verify.ts
 
+      - name: Verify JavaScript
+        if: ${{ steps.filter.outputs.js == 'true' }}
+        run: nps verify.js
+
       - name: Verify JSON
         if: ${{ steps.filter.outputs.json == 'true' }}
         run: nps verify.json
@@ -103,5 +110,5 @@ jobs:
 
       # Only run tests if the PR touches behavior-related files.
       - name: Test
-        if: ${{ steps.filter.outputs.ts == 'true' || steps.filter.outputs.json == 'true' }}
+        if: ${{ steps.filter.outputs.js == 'true' || steps.filter.outputs.json == 'true' || steps.filter.outputs.ts == 'true' }}
         run: nps test
