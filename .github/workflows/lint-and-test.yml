@@ -32,18 +32,10 @@ jobs:
         id: filter
         with:
           filters: |
-            scss:
-              - '**/*.scss'
             browserslist:
               - '.browserslistrc'
             dockerfile:
               - '**/Dockerfile'
-            liquid:
-              - '**/*.html'
-              - '**/*.liquid'
-            ts:
-              - '**/*.ts'
-              - '**/*.mts'
             js:
               - '**/*.js'
               - '**/*.mjs'
@@ -51,23 +43,26 @@ jobs:
               - '**/*.json'
               - '**/*.json5'
               - '**/*.jsonc'
+            liquid:
+              - '**/*.html'
+              - '**/*.liquid'
             md:
               - '**/*.md'
+            scss:
+              - '**/*.scss'
             svg:
               - '**/*.svg'
             toml:
               - '**/*.toml'
+            ts:
+              - '**/*.ts'
+              - '**/*.mts'
             yaml:
               - '**/*.yml'
               - '**/*.yaml'
 
       # Use the filter to check if files with a specific file type were changed
       # in the PR. If they were, run the relevant linters. Otherwise, skip.
-
-      - name: Verify SCSS
-        if: ${{ steps.filter.outputs.scss == 'true' }}
-        run: nps verify.scss
-
       - name: Verify Browserslist
         if: ${{ steps.filter.outputs.browserslist == 'true' }}
         run: nps verify.browserslist
@@ -75,14 +70,6 @@ jobs:
       - name: Verify Dockerfile
         if: ${{ steps.filter.outputs.dockerfile == 'true' }}
         run: nps verify.dockerfile
-
-      - name: Verify Liquid
-        if: ${{ steps.filter.outputs.liquid == 'true' }}
-        run: nps verify.liquid
-
-      - name: Verify TypeScript
-        if: ${{ steps.filter.outputs.ts == 'true' || steps.filter.outputs.json == 'true' }}
-        run: nps verify.ts
 
       - name: Verify JavaScript
         if: ${{ steps.filter.outputs.js == 'true' }}
@@ -92,9 +79,17 @@ jobs:
         if: ${{ steps.filter.outputs.json == 'true' }}
         run: nps verify.json
 
+      - name: Verify Liquid
+        if: ${{ steps.filter.outputs.liquid == 'true' }}
+        run: nps verify.liquid
+
       - name: Verify Markdown
         if: ${{ steps.filter.outputs.md == 'true' }}
         run: nps verify.md
+
+      - name: Verify SCSS
+        if: ${{ steps.filter.outputs.scss == 'true' }}
+        run: nps verify.scss
 
       - name: Verify SVG
         if: ${{ steps.filter.outputs.svg == 'true' }}
@@ -103,6 +98,10 @@ jobs:
       - name: Verify TOML
         if: ${{ steps.filter.outputs.toml == 'true' }}
         run: nps verify.toml
+
+      - name: Verify TypeScript
+        if: ${{ steps.filter.outputs.ts == 'true' }}
+        run: nps verify.ts
 
       - name: Verify YAML
         if: ${{ steps.filter.outputs.yaml == 'true' }}

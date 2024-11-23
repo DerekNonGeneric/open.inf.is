@@ -7,17 +7,15 @@
 
 import { exec, glob } from '@openinf/portal/build/utils';
 
-const YAMLFiles = await glob([
+const yamlFiles = await glob([
   '**.yml',
   '**.yaml',
   '!_site/',
   '!node_modules/',
-  '!vendor/',
-  '!**/COPYING.md',
 ]);
 
 let exitCode = 0;
-const scripts = [`prettier --write ${YAMLFiles.join(' ')}`];
+const scripts = [`prettier --write ${yamlFiles.join(' ')}`];
 
 for (const element of scripts) {
   exitCode = await exec(element);

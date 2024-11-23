@@ -7,18 +7,17 @@
 
 import { exec, glob } from '@openinf/portal/build/utils';
 
-const MarkdownFiles = await glob([
+const markdownFiles = await glob([
   '**.md',
-  '!_site/',
   '!node_modules/',
-  '!vendor/',
   '!**/COPYING.md',
+  '!_site/',
 ]);
 
 let exitCode = 0;
 const scripts = [
-  `prettier --write ${MarkdownFiles.join(' ')}`,
-  `markdownlint-cli2 --fix ${MarkdownFiles.join(' ')}`,
+  `prettier --write ${markdownFiles.join(' ')}`,
+  `markdownlint-cli2 --fix ${markdownFiles.join(' ')}`,
 ];
 
 for (const element of scripts) {

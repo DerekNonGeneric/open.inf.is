@@ -4,13 +4,7 @@
   "IgnoreDefaults": true,
   "SpacesAftertabs": false,
   "NoColor": false,
-  "Exclude": [
-    "vendor/",
-    "pnpm-lock.yaml",
-    "Gemfile.lock",
-    ".markdownlint.jsonc",
-    "LICENSE/"
-  ],
+  "Exclude": ["pnpm-lock.yaml", ".markdownlint.jsonc", "LICENSE/"],
   "AllowedContentTypes": [],
   "PassedFiles": [],
   "Disable": {

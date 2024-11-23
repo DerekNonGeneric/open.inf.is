@@ -9,7 +9,7 @@
   "globs": ["**.md"],
 
   // Define glob expressions to ignore
-  "ignores": ["_site/", "node_modules/", "vendor/", "**/COPYING.md"],
+  "ignores": ["_site/", "node_modules/", "**/COPYING.md"],
 
   "markdownItPlugins": [
     ["markdown-it-task-lists"],

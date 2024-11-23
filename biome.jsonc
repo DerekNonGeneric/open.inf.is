@@ -12,13 +12,25 @@
       "**/.git/",
       "**/_site/",
       "**/node_modules/",
-      "**/vendor/",
       "**/package.json",
       "**/pnpm-lock.yaml"
     ]
   },
   "organizeImports": { "enabled": true },
-  "linter": { "enabled": true, "rules": { "recommended": true } },
+  "linter": {
+    "enabled": true,
+    "rules": {
+      "recommended": true,
+      "style": {
+        "useNamingConvention": {
+          "level": "error",
+          "options": {
+            "strictCase": true
+          }
+        }
+      }
+    }
+  },
   "javascript": {
     "formatter": {
       "jsxQuoteStyle": "double",
