@@ -8,5 +8,5 @@
       "path": "./project-terms.txt"
     }
   ],
-  "ignorePaths": ["_site/**", "node_modules/**", "vendor/**", "**/COPYING.md"]
+  "ignorePaths": ["_site/**", "node_modules/**", "**/COPYING.md"]
 }

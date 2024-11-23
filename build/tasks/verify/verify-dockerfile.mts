@@ -7,15 +7,14 @@
 
 import { exec, glob } from '@openinf/portal/build/utils';
 
-const DockerfileFiles = await glob([
+const dockerfileFiles = await glob([
   '.devcontainer/**/Dockerfile',
   '!_site/',
   '!node_modules/',
-  '!vendor/',
 ]);
 
 let exitCode = 0;
-const scripts = [`dprint check ${DockerfileFiles.join(' ')}`];
+const scripts = [`dprint check ${dockerfileFiles.join(' ')}`];
 
 for (const element of scripts) {
   exitCode = await exec(element);

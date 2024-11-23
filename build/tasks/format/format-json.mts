@@ -7,17 +7,16 @@
 
 import { exec, glob } from '@openinf/portal/build/utils';
 
-const JSONFiles = await glob([
+const jsonFiles = await glob([
   '**.json',
   '**.json5',
   '**.jsonc',
   '!_site/',
   '!node_modules/',
-  '!vendor/',
 ]);
 
 let exitCode = 0;
-const scripts = [`biome check --apply ${JSONFiles.join(' ')}`];
+const scripts = [`biome check --write ${jsonFiles.join(' ')}`];
 
 for (const element of scripts) {
   exitCode = await exec(element);

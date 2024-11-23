@@ -7,19 +7,12 @@
 
 import { exec, glob } from '@openinf/portal/build/utils';
 
-const SCSSFiles = await glob([
-  '**.scss',
-  '!_sass/bootstrap/',
-  '!_sass/bourbon/',
-  '!_site/',
-  '!node_modules/',
-  '!vendor/',
-]);
+const scssFiles = await glob(['**.scss', '!_site/', '!node_modules/']);
 
 let exitCode = 0;
 const scripts = [
-  `prettier --check ${SCSSFiles.join(' ')}`,
-  `stylelint ${SCSSFiles.join(' ')}`,
+  `prettier --check ${scssFiles.join(' ')}`,
+  `stylelint ${scssFiles.join(' ')}`,
 ];
 
 for (const element of scripts) {

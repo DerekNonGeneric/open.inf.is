@@ -8,17 +8,12 @@
 import { exec, glob } from '@openinf/portal/build/utils';
 import vnu from 'vnu-jar';
 
-const SVGFiles = await glob([
-  '**.svg',
-  '!_site/',
-  '!node_modules/',
-  '!vendor/',
-]);
+const svgFiles = await glob(['**.svg', '!_site/', '!node_modules/']);
 
 let exitCode = 0;
 const scripts = [
-  `prettier --check ${SVGFiles.join(' ')}`,
-  `java -jar ${vnu} --svg ${SVGFiles.join(' ')}`,
+  `prettier --check ${svgFiles.join(' ')}`,
+  `java -jar ${vnu} --svg ${svgFiles.join(' ')}`,
 ];
 
 for (const element of scripts) {

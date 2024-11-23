@@ -7,15 +7,10 @@
 
 import { exec, glob } from '@openinf/portal/build/utils';
 
-const TOMLFiles = await glob([
-  '**.toml',
-  '!_site/',
-  '!node_modules/',
-  '!vendor/',
-]);
+const tomlFiles = await glob(['**.toml', '!_site/', '!node_modules/']);
 
 let exitCode = 0;
-const scripts = [`dprint check ${TOMLFiles.join(' ')}`];
+const scripts = [`dprint check ${tomlFiles.join(' ')}`];
 
 for (const element of scripts) {
   exitCode = await exec(element);

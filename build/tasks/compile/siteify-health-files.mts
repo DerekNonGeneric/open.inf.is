@@ -120,7 +120,6 @@ for (const value of healthFiles) {
       siteifyFile(value, 'collections/_docs', {
         title: 'Support • Frequently Asked Questions',
         permalink: '/docs/dev/faq/support',
-        redirect_from: '/docs/dev/faq/help',
       });
       break;
     case 'VISION.md':

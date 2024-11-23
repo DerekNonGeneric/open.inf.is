@@ -7,10 +7,10 @@
 
 import { exec, glob } from '@openinf/portal/build/utils';
 
-const JSFiles = await glob(['**.js', '**.mjs', '!_site/', '!node_modules/']);
+const jsFiles = await glob(['**.js', '**.mjs', '!_site/', '!node_modules/']);
 
 let exitCode = 0;
-const scripts = [`biome check ${JSFiles.join(' ')}`];
+const scripts = [`biome check ${jsFiles.join(' ')}`];
 
 for (const element of scripts) {
   exitCode = await exec(element);

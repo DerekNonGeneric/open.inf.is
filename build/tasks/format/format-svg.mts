@@ -7,15 +7,10 @@
 
 import { exec, glob } from '@openinf/portal/build/utils';
 
-const SVGFiles = await glob([
-  '**.svg',
-  '!_site/',
-  '!node_modules/',
-  '!vendor/',
-]);
+const svgFiles = await glob(['**.svg', '!_site/', '!node_modules/']);
 
 let exitCode = 0;
-const scripts = [`prettier --write ${SVGFiles.join(' ')}`];
+const scripts = [`prettier --write ${svgFiles.join(' ')}`];
 
 for (const element of scripts) {
   exitCode = await exec(element);

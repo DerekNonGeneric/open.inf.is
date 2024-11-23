@@ -7,7 +7,7 @@
 
 import { exec, glob } from '@openinf/portal/build/utils';
 
-const LiquidFiles = await glob([
+const liquidFiles = await glob([
   '**.html',
   '**.liquid',
   '!_site/',
@@ -15,7 +15,7 @@ const LiquidFiles = await glob([
 ]);
 
 let exitCode = 0;
-const scripts = [`prettier --check ${LiquidFiles.join(' ')}`];
+const scripts = [`prettier --check ${liquidFiles.join(' ')}`];
 
 for (const element of scripts) {
   exitCode = await exec(element);
