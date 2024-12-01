@@ -1,27 +1,55 @@
 /* Additional error page styling */
 
-.error h1,
-.error h2 {
-  font-weight: 400;
-  text-align: center;
-  text-transform: uppercase;
-}
+.error {
+  h1 {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    display: inherit;
+    width: 100%;
+    font-size: 10rem;
+    font-weight: 800;
+    color: shade-color($body-bg, 10%);
+    transform: translateY(-50%);
+  }
 
-.error h1 {
-  display: inherit;
-  margin: 1.5em;
-  font-size: 4.2rem;
-}
+  h1::after {
+    display: none;
+    margin-inline-start: 0;
+  }
 
-.error h1::after {
-  display: none;
-  margin-inline-start: 0;
-}
+  @include media-breakpoint-up(sm) {
+    h1 {
+      font-size: 14rem;
+    }
+  }
 
-.error h2 {
-  font-size: 1.8rem;
-}
+  @include media-breakpoint-up(md) {
+    h1 {
+      font-size: 18rem;
+    }
+  }
 
-.error .container {
-  padding-top: 20vh;
+  h2 {
+    font-size: 1.8rem;
+    font-weight: 400;
+  }
+
+  .wrapper {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    font-size: 10rem;
+    transform: translateY(-50%);
+
+    .btn {
+      width: fit-content;
+      margin: 0 auto;
+      color: $secondary;
+      text-transform: uppercase;
+    }
+  }
 }
